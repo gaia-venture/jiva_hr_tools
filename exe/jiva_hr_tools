@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby
 
-$LOAD_PATH.unshift "./lib" 
+$LOAD_PATH.unshift "./lib"
 require 'bundler/setup'
 require 'jiva_hr_tools/cli'
+
+require 'jiva_hr_tools/freshteam_graphql'
 
 JivaHrTools::CLI.start
