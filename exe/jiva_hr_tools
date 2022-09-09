@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift "./lib" 
+require 'bundler/setup'
+require 'jiva_hr_tools/cli'
+
+JivaHrTools::CLI.start
