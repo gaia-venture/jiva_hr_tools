@@ -1,8 +1,6 @@
 version: 2.1
 jobs:
   post_leaves_to_slack:
-    context:
-      - jiva_hr_tools
     docker:
       - image: ruby:3.1.0
     steps:
@@ -18,10 +16,12 @@ workflows:
   daily:
     triggers:
       - schedule:
-          cron: "50 09 * * 1-5"
+          cron: "52 09 * * 1-5"
           filters:
             branches:
               only:
                 - main
     jobs:
-      - post_leaves_to_slack
+      - post_leaves_to_slack:
+          context:
+            - jiva_hr_tools
