@@ -32,7 +32,7 @@ module JivaHrTools
           request["Content-Type"] = "application/json; charset=utf-8"
           request["Authorization"] = "Bearer #{ENV["SLACK_TOKEN"]}"
           request.body = JSON.generate({
-            channel: slack_channel,
+            channel: "#testing-jiva-bot",
             blocks: [{
               type: "section",
               text: {

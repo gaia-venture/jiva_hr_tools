@@ -1,13 +1,25 @@
 version: 2.1
 jobs:
-  build:
+  post_leaves_to_slack:
     docker:
-      - image: ruby:3.0.0
+      - image: ruby:3.1.0
     steps:
       - checkout
       - run:
-          name: Run the default task
+          name: Post Leaves To Slack
           command: |
             gem install bundler -v 2.3.4
             bundle install
-            bundle exec rake
+            ./exe/jiva_hr_tools post_leaves_to_slack
+
+workflows:
+  daily:
+    triggers:
+      - schedule:
+          cron: "09 45 * * 1-5"
+          filters:
+            branches:
+              only:
+                - main
+    jobs:
+      - post_leaves_to_slack
